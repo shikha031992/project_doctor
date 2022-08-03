@@ -1,0 +1,63 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     
+  </head>
+  <body>    
+                
+    <section id="blogArchive">      
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="blog-breadcrumbs-area">
+            <div class="container">
+              <div class="blog-breadcrumbs-left">
+                <h2>Cancel Appointment</h2>
+              </div>
+              <div class="blog-breadcrumbs-right">
+                <ol class="breadcrumb">
+                  <li>You are here</li>
+                  <li><a href="/">Home</a></li>                  
+                  <li class="active">Cancel Appointment</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>      
+    </section>    
+    
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-6">
+            <div class="contact-form">
+              <div class="section-heading">
+                <h2>Cancel Appointment</h2>
+                <div class="line"></div>
+              </div>
+              
+                {% if msg %}
+                  <b style="color:blue;">{{msg}}</b>
+                {% endif %}  
+              </p>
+              <form class="submitphoto_form" method="post" action="{% url 'patient_cancel_appointment' pk=appointment.pk %}">
+                {% csrf_token %}
+                <input type="text" class="wp-form-control wpcf7-text" value="{{appointment.doctor.doctor.fname}}">
+                <input type="text" class="wp-form-control wpcf7-text" value="{{appointment.patient.fname}}">          
+                <textarea class="wp-form-control wpcf7-textarea" cols="30" rows="10" placeholder="Reason To Cancel Appointment" name="reason"></textarea>
+               <button class="wpcf7-submit button--itzel" type="submit"><i class="button__icon fa fa-envelope"></i><span>cancel Appointment</span></button>                
+              </form>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+     
+  </body>
+</html>
+{% endblock %}

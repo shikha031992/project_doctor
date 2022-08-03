@@ -1,0 +1,294 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title>WpF Medinova : Home</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href=" '{% static 'images/favicon.ico' %}"/>
+
+    <!-- CSS
+    ================================================== -->       
+    <!-- Bootstrap css file-->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font awesome css file-->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">       
+    <!-- Default Theme css file -->
+    <link id="switcher" href="{% static 'css/themes/default-theme.css' %}" rel="stylesheet">   
+    <!-- Slick slider css file -->
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet"> 
+    <!-- Photo Swipe Image Gallery -->     
+    <link rel='stylesheet prefetch' href="{% static 'css/photoswipe.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'css/default-skin.css' %}">    
+
+    <!-- Main structure css file -->
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+   
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
+    <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>   
+    <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
+
+     
+  </head>
+  <body>  
+    
+    
+   
+    
+
+    
+
+    
+
+
+
+    <!--=========== BEGAIN Doctors SECTION ================-->
+    <section id="meetDoctors">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="meetDoctors-area">
+             <!-- Start Service Title -->
+              <div class="section-heading">
+                <br><br><br>
+                <h2>Meet Our Doctors</h2>
+                <div class="line"></div>
+              </div>
+              <div class="doctors-area">
+                <ul class="doctors-nav">
+                  {% for i in doctors %}
+                  <li>
+                    <div class="single-doctor">
+                      <a class="tdoctor" href="{% url 'doctor_detail' pk=i.pk %}" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                        <figure>
+                          <img src="{{i.doctor_picture.url}}" style="width:250px;height:350px;" />
+                          <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+                          <figcaption>
+                            <h2>Dr.{{i.doctor.fname}}</h2>
+                            <p>{{i.doctor_speciality}}</p>
+                            <button>View</button>             
+                          </figcaption>
+                        </figure>
+                      </a>   
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--=========== End Doctors SECTION ================-->
+
+    <!--=========== BEGAIN Testimonial SECTION ================-->
+    <section id="testimonial">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="testimonial-area">
+             <!-- Start Service Title -->
+              <div class="section-heading">
+                <h2>What our patients said</h2>
+                <div class="line"></div>
+              </div>
+              <div class="testimonial-area">
+                <ul class="testimonial-nav">
+                  <li>
+                    <div class="single-testimonial">
+                      <div class="testimonial-img">
+                        <img src="{% static 'images/patients-3.jpg'%}" alt="img">
+                      </div>
+                      <div class="testimonial-cotent">
+                        <p class="testimonial-parg">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.There are many variations of passages of Lorem Ipsum available.</p>
+                      </div>
+                    </div>
+                  </li> 
+                  <li>
+                    <div class="single-testimonial">
+                      <div class="testimonial-img">
+                        <img src="{% static 'images/patients-1.jpg'%}" alt="img">
+                      </div>
+                      <div class="testimonial-cotent">
+                        <p class="testimonial-parg">There are many variations of passages of Lorem Ipsum available.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                      </div>
+                    </div>
+                  </li> 
+                  <li>
+                    <div class="single-testimonial">
+                      <div class="testimonial-img">
+                        <img src="{% static 'images/patients-2.jpg'%}" alt="img">
+                      </div>
+                      <div class="testimonial-cotent">
+                        <p class="testimonial-parg">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.There are many variations of passages of Lorem Ipsum available.</p>
+                      </div>
+                    </div>
+                  </li>                 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--=========== End Testimonial SECTION ================-->
+
+    <!--=========== BEGAIN Home Blog SECTION ================-->
+    <section id="homeBLog">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="homBlog-area">
+             <!-- Start Service Title -->
+              <div class="section-heading">
+                <h2>News From Blog</h2>
+                <div class="line"></div>
+              </div> 
+              <!-- Start Home Blog Content -->
+              <div class="homeBlog-content">
+                <div class="row">
+                  <!-- Start Single Blog -->
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="single-Blog">
+                      <div class="single-blog-left">
+                        <ul class="blog-comments-box">
+                          <li>May <h2>10</h2>2015</li>
+                          <li><span class="fa fa-eye"></span>1523</li>
+                          <li><a href="#"><span class="fa fa-comments"></span>5</a></li>
+                        </ul>
+                      </div>
+                      <div class="single-blog-right">
+                        <div class="blog-img">
+                          <figure class="blog-figure">
+                           <a href="#"><img src="{% static 'images/choose-us-img3.jpg'%}" alt="img"></a>
+                            <span class="image-effect"></span>
+                          </figure>
+                        </div>
+                        <div class="blog-author">
+                          <ul>
+                            <li>By <a href="#">Dr. Smith</a></li>
+                            <li>In <a href="#">Dental</a></li>
+                          </ul>
+                        </div>
+                        <div class="blog-content">
+                          <h2>Latest Trend Of Medical Dental Department</h2>
+                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                          <div class="readmore_area">
+                            <a href="#" data-hover="Read More"><span>Read More</span></a>                
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <!-- Start Single Blog -->
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="single-Blog">
+                      <div class="single-blog-left">
+                        <ul class="blog-comments-box">
+                          <li>May <h2>10</h2>2015</li>
+                          <li><span class="fa fa-eye"></span>1523</li>
+                          <li><a href="#"><span class="fa fa-comments"></span>5</a></li>
+                        </ul>
+                      </div>
+                      <div class="single-blog-right">
+                         <div class="blog-img">
+                          <figure class="blog-figure">
+                           <a href="#"><img src="{% static 'images/choose-us-img3.jpg'%}" alt="img"></a>
+                            <span class="image-effect"></span>
+                          </figure>
+                        </div>
+                        <div class="blog-author">
+                          <ul>
+                            <li>By <a href="#">Dr. Smith</a></li>
+                            <li>In <a href="#">Dental</a></li>
+                          </ul>
+                        </div>
+                        <div class="blog-content">
+                          <h2>Latest Trend Of Medical Dental Department</h2>
+                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                          <div class="readmore_area">
+                            <a href="#" data-hover="Read More"><span>Read More</span></a>                
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <!-- Start Single Blog -->
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="single-Blog">
+                      <div class="single-blog-left">
+                        <ul class="blog-comments-box">
+                          <li>May <h2>10</h2>2015</li>
+                          <li><span class="fa fa-eye"></span>1523</li>
+                          <li><a href="#"><span class="fa fa-comments"></span>5</a></li>
+                        </ul>
+                      </div>
+                      <div class="single-blog-right">
+                         <div class="blog-img">
+                          <figure class="blog-figure">
+                           <a href="#"><img src="{% static 'images/choose-us-img3.jpg'%}" alt="img"></a>
+                            <span class="image-effect"></span>
+                          </figure>
+                        </div>
+                        <div class="blog-author">
+                          <ul>
+                            <li>By <a href="#">Dr. Smith</a></li>
+                            <li>In <a href="#">Dental</a></li>
+                          </ul>
+                        </div>
+                        <div class="blog-content">
+                          <h2>Latest Trend Of Medical Dental Department</h2>
+                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                          <div class="readmore_area">
+                            <a href="#" data-hover="Read More"><span>Read More</span></a>                
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>             
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--=========== End Home Blog SECTION ================-->
+
+
+
+    <!-- jQuery Library  -->
+    <script src="{% static 'js/jquery.js'%}"></script>    
+    <!-- Bootstrap default js -->
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <!-- slick slider -->
+    <script src="{% static 'js/slick.min.js'%}"></script>    
+    <script type="text/javascript" src="{% static 'js/modernizr.custom.79639.js'%}"></script>      
+    <!-- counter -->
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <!-- Doctors hover effect -->
+    <script src="{% static 'js/snap.svg-min.js'%}"></script>
+    <script src="{% static 'js/hovers.js'%}"></script>
+    <!-- Photo Swipe Gallery Slider -->
+    <script src="{% static 'js/photoswipe.min.js'%}"></script>
+    <script src="{% static 'js/photoswipe-ui-default.min.js'%}"></script>    
+    <script src="{% static 'js/photoswipe-gallery.js'%}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/custom.js'%}"></script>    
+  </body>
+</html>
+{% endblock %} 

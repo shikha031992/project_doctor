@@ -1,0 +1,74 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <section id="blogArchive">      
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="blog-breadcrumbs-area">
+            <div class="container">
+              <div class="blog-breadcrumbs-left">
+                <h2>Book An Appointment</h2>
+              </div>
+              <div class="blog-breadcrumbs-right">
+                <ol class="breadcrumb">
+                  <li>You are here</li>
+                  <li><a href="#">Home</a></li>                  
+                  <li class="active">Book Appointment</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>      
+    </section>    
+   
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-6">
+            <div class="contact-form">
+              <div class="section-heading">
+                <h2>Book Appointment</h2>
+                <div class="line"></div>
+              </div>
+              
+               <p>
+                {% if msg %}
+                  <b style="color:blue;">{{msg}}</b>
+                {% endif %}
+              </p>
+              <p><h3>Doctor Information</h3></p>
+              <form class="submitphoto_form" method="post" action="{% url 'book_appointment' pk=doctor.pk %}">
+                {% csrf_token %}
+                <input type="text" class="wp-form-control wpcf7-text" value="{{doctor.doctor.fname}}" readonly>
+                <input type="text" class="wp-form-control wpcf7-text" value="{{doctor.doctor.lname}}" readonly>
+                <input type="text" class="wp-form-control wpcf7-email" value="{{doctor.doctor_speciality}}" readonly>
+                <p><h3>Patient Information</h3></p>
+                <input type="text" class="wp-form-control wpcf7-text" value="{{patient.fname}}">
+                <input type="text" class="wp-form-control wpcf7-text" value="{{patient.lname}}">
+                <input type="date" class="wp-form-control wpcf7-text" name="date">
+                <select name="time" class="wp-form-control wpcf7-text">
+                  <option>---Select Time---</option>
+                  <option value="9:00 to 10:00">9:00 to 10:00</option>
+                  <option value="10:00 to 11:00">10:00 to 11:00</option>
+                  <option value="11:00 to 12:00">11:00 to 12:00</option>
+                </select>
+                <textarea class="wp-form-control wpcf7-textarea" cols="30" rows="10" placeholder="Health Issue" name="health_issue"></textarea>
+                
+               <button class="wpcf7-submit button--itzel" type="submit"><i class="button__icon fa fa-envelope"></i><span>Confirm Appointment</span></button>                
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>
+{% endblock %}

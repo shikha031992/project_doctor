@@ -1,0 +1,92 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <section id="blogArchive">      
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="blog-breadcrumbs-area">
+            <div class="container">
+              <div class="blog-breadcrumbs-left">
+                <h2>My Appointment</h2>
+              </div>
+              <div class="blog-breadcrumbs-right">
+                <ol class="breadcrumb">
+                  <li>You are here</li>
+                  <li><a href="#">Home</a></li>                  
+                  <li class="active">My Appointment</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>      
+    </section>    
+   
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="contact-form">
+              <div class="section-heading">
+                <h2>My Appointment</h2>
+                <div class="line"></div>
+              </div>
+              
+              <p>
+                {% if msg %}
+                  <b style="color:blue;">{{msg}}</b>
+                {% endif %}
+              </p>
+              <table border="5" width="100%" cellpadding="10px" cellspacing="10px">
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Doctor Name</th>
+                  <th>Patient Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Health Issue</th>
+                  <th>Prescription</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                {% for i in appointments %}
+                <tr>
+                  <td>{{i.id}}</td>
+                  <td>{{i.doctor.doctor.fname}}</td>
+                  <td>{{i.patient.fname}}</td>
+                  <td>{{i.date}}</td>
+                  <td>{{i.time}}</td>
+                  <td>{{i.health_issue}}</td>
+                  <td>{{i.prescription}}</td>
+                  <td>{{i.status}}</td>
+                  <td>
+                    <form method="get" action="{% url 'patient_cancel_appointment' pk=i.pk %}">
+                      {% csrf_token %}
+                      {% if i.status == "pending" %}
+                        <input type="submit" name="action" value="Cancel">
+                      {% elif i.status == "compeleted" %}
+                        <input type="submit" name="action" value="Compeleted" disabled>
+                      {% else %}
+                        <input type="submit" name="action" value="{{i.status}}" disabled>
+                      {% endif %}  
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </section>
+
+  </body>
+</html>
+{% endblock %}

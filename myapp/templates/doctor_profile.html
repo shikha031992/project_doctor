@@ -1,0 +1,74 @@
+{% extends 'doctor_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     
+  </head>
+  <body>    
+                
+    <section id="blogArchive">      
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="blog-breadcrumbs-area">
+            <div class="container">
+              <div class="blog-breadcrumbs-left">
+                <h2>Contact</h2>
+              </div>
+              <div class="blog-breadcrumbs-right">
+                <ol class="breadcrumb">
+                  <li>You are here</li>
+                  <li><a href="#">Home</a></li>                  
+                  <li class="active">Doctor Profile</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>      
+    </section>    
+    
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-6">
+            <div class="contact-form">
+              <div class="section-heading">
+                <h2>Doctor Profile</h2>
+                <div class="line"></div>
+              </div>
+              
+                {% if msg %}
+                  <b style="color:blue;">{{msg}}</b>
+                {% endif %}  
+
+              </p>
+              <form class="submitphoto_form1" method="post" action="{% url 'doctor_profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" class="wp-form-control wpcf7-text" placeholder="Doctor Degree" name="doctor_degree" value="{{doctor_profile.doctor_degree}}">
+                
+                <input type="text" class="wp-form-control wpcf7-text" placeholder="Doctor Speciality" name="doctor_speciality" value="{{doctor_profile.doctor_speciality}}">
+
+                <input type="text" class="wp-form-control wpcf7-email" placeholder="Start Time" name="doctor_start_time" value="{{doctor_profile.doctor_start_time}}">
+
+                <input type="text" class="wp-form-control wpcf7-email" placeholder="End Time" name="doctor_end_time" value="{{doctor_profile.doctor_end_time}}">
+
+                <input type="text" class="wp-form-control wpcf7-text" placeholder="Doctor Fees" name="doctor_fees" value="{{doctor_profile.doctor_fees}}">
+                {% if doctor_profile.doctor_picture %}
+                  <img src="{{doctor_profile.doctor_picture.url}}" width="100px" height="100px">
+                {% endif %} 
+                <input type="file" class="wp-form-control wpcf7-text" name="doctor_picture">          
+                 <button class="wpcf7-submit button--itzel"  type="submit"><i class="button__icon fa fa-envelope"></i><span>Update Profile</span></button>                
+              </form>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+     
+  </body>
+</html>
+{% endblock %}
